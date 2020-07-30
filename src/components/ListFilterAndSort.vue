@@ -21,6 +21,7 @@
 
 <script>
     import shortId from 'shortid'
+
     export default {
         name: "ListFilterAndSort",
         data() {
@@ -44,16 +45,18 @@
         },
         computed: {
             filterPersons() {
-                // 1. 获取数据
-                // let {searchName, persons} = this
-                // 这是 ES6 语法，等价于
-                //      let searchName = this.searchName;
-                //      let persons = this.persons;
+                /* 1. 获取数据
+                    let {searchName, persons} = this
+                    这是 ES6 语法，等价于
+                     let searchName = this.searchName;
+                     let persons = this.persons;
+                 */
                 let {searchName, persons, orderType} = this;
 
-                // 2. 取出数组中的数据
-                // ..persons, 将 persons展开，将其中的所有可遍历内容放到 arr 中，
-                // 是对 persons 的一种浅拷贝，拷贝的是引用
+                /* 2. 取出数组中的数据
+                    ..persons, 将 persons展开，将其中的所有可遍历内容放到 arr 中，
+                    是对 persons 的一种浅拷贝，拷贝的是引用
+                */
                 let arr = [...persons];
 
                 // 3. 过滤数组
@@ -61,9 +64,27 @@
                     arr = persons.filter(p => p.name.indexOf(searchName) !== -1)
                 }
 
-                // 排序
+                /* 排序
+                    sort(function(a, b){
+                        return a - b
+                    }),
+                    1) 当 a - b > 0时，a 在 b 前面，可以理解为，a 比 b 小，所以，a 在前边
+                    2) 当 a - b < 0时，b 在 a 前面
+
+                    sort() 具体讲解，https://www.6blog.cn/frontEnd/153
+                */
+                // 注意，在这里 0 为 false
+                // 4. 排序
                 if (orderType) {
-                    arr.sort()
+                    arr.sort((p1, p2) => {
+                        // 降序，大的在前边
+                        if (orderType === 1) {
+                            return p2.age - p1.age
+                        // 升序，小的在前边
+                        } else {
+                            return p1.age - p2.age
+                        }
+                    })
                 }
 
                 return arr;
@@ -81,6 +102,7 @@
     ul {
         list-style: none;
     }
+
     ul li {
         padding: 10px 0;
     }

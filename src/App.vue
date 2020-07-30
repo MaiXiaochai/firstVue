@@ -7,7 +7,8 @@
         <!--        <ClassAndStyle />-->
         <!--        <IfAndShow/>-->
         <!--        <ListRender/>-->
-        <ListFilterAndSort/>
+        <!--        <ListFilterAndSort/>-->
+        <OtherInstruct/>
 
     </div>
 </template>
@@ -19,7 +20,8 @@
     // import ClassAndStyle from "./components/ClassAndStyle";
     // import IfAndShow from "./components/IfAndShow";
     // import ListRender from "./components/ListRender";
-    import ListFilterAndSort from "./components/ListFilterAndSort";
+    // import ListFilterAndSort from "./components/ListFilterAndSort";
+    import OtherInstruct from "./components/OtherInstruct";
 
     export default {
         name: 'App',
@@ -30,7 +32,8 @@
             // ClassAndStyle,
             // IfAndShow,
             // ListRender,
-            ListFilterAndSort,
+            // ListFilterAndSort,
+            OtherInstruct,
         }
     }
 </script>
