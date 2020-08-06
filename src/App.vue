@@ -8,7 +8,8 @@
         <!--        <IfAndShow/>-->
         <!--        <ListRender/>-->
         <!--        <ListFilterAndSort/>-->
-        <OtherInstruct/>
+        <!--        <OtherInstruct/>-->
+        <Demo/>
 
     </div>
 </template>
@@ -21,7 +22,8 @@
     // import IfAndShow from "./components/IfAndShow";
     // import ListRender from "./components/ListRender";
     // import ListFilterAndSort from "./components/ListFilterAndSort";
-    import OtherInstruct from "./components/OtherInstruct";
+    // import OtherInstruct from "./components/OtherInstruct";
+    import Demo from "./components/Demo";
 
     export default {
         name: 'App',
@@ -33,7 +35,8 @@
             // IfAndShow,
             // ListRender,
             // ListFilterAndSort,
-            OtherInstruct,
+            // OtherInstruct,
+            Demo,
         }
     }
 </script>
