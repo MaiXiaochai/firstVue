@@ -23,7 +23,7 @@
     // import ListRender from "./components/ListRender";
     // import ListFilterAndSort from "./components/ListFilterAndSort";
     // import OtherInstruct from "./components/OtherInstruct";
-    import Demo from "./components/Demo";
+    import DemoEvent from "./components/DemoEvent";
 
     export default {
         name: 'App',
@@ -36,7 +36,7 @@
             // ListRender,
             // ListFilterAndSort,
             // OtherInstruct,
-            Demo,
+            DemoEvent,
         }
     }
 </script>
