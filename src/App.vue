@@ -1,7 +1,9 @@
 <template>
     <div id="app">
+        <p>以下为组件</p>
+        <hr>
         <!--        <img alt="Vue logo" src="./assets/logo.png">-->
-        <HelloWorld msg="Welcome to Your Vue.js App"/>
+        <!--        <HelloWorld msg="Welcome to Your Vue.js App"/>-->
         <!--        <Test></Test>-->
         <!--        <ComputedAndWatch/>-->
         <!--        <ClassAndStyle />-->
@@ -9,13 +11,14 @@
         <!--        <ListRender/>-->
         <!--        <ListFilterAndSort/>-->
         <!--        <OtherInstruct/>-->
-        <Demo/>
+        <!--        <DemoEvent></DemoEvent>-->
+        <MyFilters></MyFilters>
 
     </div>
 </template>
 
 <script>
-    import HelloWorld from './components/HelloWorld.vue'
+    // import HelloWorld from './components/HelloWorld.vue'
     // import Test from './components/Test.vue'
     // import ComputedAndWatch from './components/ComputedAndWatch.vue'
     // import ClassAndStyle from "./components/ClassAndStyle";
@@ -23,12 +26,12 @@
     // import ListRender from "./components/ListRender";
     // import ListFilterAndSort from "./components/ListFilterAndSort";
     // import OtherInstruct from "./components/OtherInstruct";
-    import DemoEvent from "./components/DemoEvent";
-
+    // import DemoEvent from "./components/DemoEvent";
+    import MyFilters from "./components/MyFilters";
     export default {
         name: 'App',
         components: {
-            HelloWorld,
+            // HelloWorld,
             // Test,
             // ComputedAndWatch,
             // ClassAndStyle,
@@ -36,7 +39,8 @@
             // ListRender,
             // ListFilterAndSort,
             // OtherInstruct,
-            DemoEvent,
+            // DemoEvent,
+            MyFilters,
         }
     }
 </script>

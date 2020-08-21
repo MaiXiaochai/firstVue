@@ -12,6 +12,12 @@ Vue.directive('upper-word', (el, binding) => {
     el.textContent = binding.value.toUpperCase();
 });
 
+// 注册全局过滤器
+Vue.filter('globalCurrencyFormat', (value) => {
+    return '￥' + Number(value).toFixed(3)
+})
+
+
 new Vue({
     render: h => h(App),
 }).$mount('#app')
