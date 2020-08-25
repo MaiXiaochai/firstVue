@@ -12,7 +12,8 @@
         <!--        <ListFilterAndSort/>-->
         <!--        <OtherInstruct/>-->
         <!--        <DemoEvent></DemoEvent>-->
-        <MyFilters></MyFilters>
+        <!--        <MyFilters></MyFilters>-->
+        <TransitionAndAnimate></TransitionAndAnimate>
 
     </div>
 </template>
@@ -27,7 +28,9 @@
     // import ListFilterAndSort from "./components/ListFilterAndSort";
     // import OtherInstruct from "./components/OtherInstruct";
     // import DemoEvent from "./components/DemoEvent";
-    import MyFilters from "./components/MyFilters";
+    // import MyFilters from "./components/MyFilters";
+    import TransitionAndAnimate from "./components/TransitionAndAnimate";
+
     export default {
         name: 'App',
         components: {
@@ -40,7 +43,8 @@
             // ListFilterAndSort,
             // OtherInstruct,
             // DemoEvent,
-            MyFilters,
+            // MyFilters,
+            TransitionAndAnimate
         }
     }
 </script>
