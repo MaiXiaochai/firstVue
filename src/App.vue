@@ -13,8 +13,10 @@
         <!--        <OtherInstruct/>-->
         <!--        <DemoEvent></DemoEvent>-->
         <!--        <MyFilters></MyFilters>-->
-        <TransitionAndAnimate></TransitionAndAnimate>
-
+        <!--        <TransitionDemo></TransitionDemo>-->
+        <!--        <AnimateDemo></AnimateDemo>-->
+        <!--        <AnimateDemoThird></AnimateDemoThird>-->
+        <LifeCircle></LifeCircle>
     </div>
 </template>
 
@@ -29,7 +31,10 @@
     // import OtherInstruct from "./components/OtherInstruct";
     // import DemoEvent from "./components/DemoEvent";
     // import MyFilters from "./components/MyFilters";
-    import TransitionAndAnimate from "./components/TransitionAndAnimate";
+    // import TransitionDemo from "./components/TransitionDemo";
+    // import AnimateDemo from "./components/AnimateDemo";
+    // import AnimateDemoThird from "./components/AnimateDemoThird";
+    import LifeCircle from "./components/LifeCircle";
 
     export default {
         name: 'App',
@@ -44,7 +49,10 @@
             // OtherInstruct,
             // DemoEvent,
             // MyFilters,
-            TransitionAndAnimate
+            // TransitionDemo,
+            // AnimateDemo,
+            // AnimateDemoThird,
+            LifeCircle
         }
     }
 </script>
