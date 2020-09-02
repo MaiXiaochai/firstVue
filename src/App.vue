@@ -16,7 +16,13 @@
         <!--        <TransitionDemo></TransitionDemo>-->
         <!--        <AnimateDemo></AnimateDemo>-->
         <!--        <AnimateDemoThird></AnimateDemoThird>-->
-        <LifeCircle></LifeCircle>
+        <!--        <LifeCircle></LifeCircle>-->
+
+        <!--   子组件用 props接收父组件值的时候，父组件中，除了参数类型为字符串的之外，其它类型的参数都要进行动态数据绑定，
+               如:age=666, age 为 Number    -->
+        <!--        <Props name="maixiaochai" :age=666 :person="p" :log-person="logPerson"></Props>-->
+        <p class="word">父组件内容，被子组件操作删除</p>
+        <CustomEvents></CustomEvents>
     </div>
 </template>
 
@@ -34,10 +40,27 @@
     // import TransitionDemo from "./components/TransitionDemo";
     // import AnimateDemo from "./components/AnimateDemo";
     // import AnimateDemoThird from "./components/AnimateDemoThird";
-    import LifeCircle from "./components/LifeCircle";
+    // import LifeCircle from "./components/LifeCircle";
+    // import Props from "./components/Props";
+    import CustomEvents from "./components/CustomEvents";
 
     export default {
         name: 'App',
+        data() {
+            return {
+                p: {
+                    name: 'Maixiaochai',
+                    age: 666
+                }
+            }
+        },
+
+        methods: {
+            logPerson() {
+                alert('Coming!');
+            }
+        },
+
         components: {
             // HelloWorld,
             // Test,
@@ -52,7 +75,9 @@
             // TransitionDemo,
             // AnimateDemo,
             // AnimateDemoThird,
-            LifeCircle
+            // LifeCircle,
+            // Props,
+            CustomEvents
         }
     }
 </script>
@@ -65,5 +90,8 @@
         text-align: center;
         color: #2c3e50;
         margin-top: 60px;
+    }
+    .word {
+
     }
 </style>
