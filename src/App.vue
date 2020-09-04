@@ -1,97 +1,56 @@
 <template>
-    <div id="app">
-        <p>以下为组件</p>
-        <hr>
-        <!--        <img alt="Vue logo" src="./assets/logo.png">-->
-        <!--        <HelloWorld msg="Welcome to Your Vue.js App"/>-->
-        <!--        <Test></Test>-->
-        <!--        <ComputedAndWatch/>-->
-        <!--        <ClassAndStyle />-->
-        <!--        <IfAndShow/>-->
-        <!--        <ListRender/>-->
-        <!--        <ListFilterAndSort/>-->
-        <!--        <OtherInstruct/>-->
-        <!--        <DemoEvent></DemoEvent>-->
-        <!--        <MyFilters></MyFilters>-->
-        <!--        <TransitionDemo></TransitionDemo>-->
-        <!--        <AnimateDemo></AnimateDemo>-->
-        <!--        <AnimateDemoThird></AnimateDemoThird>-->
-        <!--        <LifeCircle></LifeCircle>-->
-
-        <!--   子组件用 props接收父组件值的时候，父组件中，除了参数类型为字符串的之外，其它类型的参数都要进行动态数据绑定，
-               如:age=666, age 为 Number    -->
-        <!--        <Props name="maixiaochai" :age=666 :person="p" :log-person="logPerson"></Props>-->
-        <p class="word">父组件内容，被子组件操作删除</p>
-        <CustomEvents></CustomEvents>
+    <div  id="app" class="todo-container">
+        <div class="todo-wrap">
+            <ToDoHeader />
+            <ToDoList :todo-data="todoData" :del-item-in-list="delTodo"/>
+            <ToDoFooter />
+        </div>
     </div>
 </template>
 
 <script>
-    // import HelloWorld from './components/HelloWorld.vue'
-    // import Test from './components/Test.vue'
-    // import ComputedAndWatch from './components/ComputedAndWatch.vue'
-    // import ClassAndStyle from "./components/ClassAndStyle";
-    // import IfAndShow from "./components/IfAndShow";
-    // import ListRender from "./components/ListRender";
-    // import ListFilterAndSort from "./components/ListFilterAndSort";
-    // import OtherInstruct from "./components/OtherInstruct";
-    // import DemoEvent from "./components/DemoEvent";
-    // import MyFilters from "./components/MyFilters";
-    // import TransitionDemo from "./components/TransitionDemo";
-    // import AnimateDemo from "./components/AnimateDemo";
-    // import AnimateDemoThird from "./components/AnimateDemoThird";
-    // import LifeCircle from "./components/LifeCircle";
-    // import Props from "./components/Props";
-    import CustomEvents from "./components/CustomEvents";
+    import ToDoHeader from "./components/ToDoHeader";
+    import ToDoList from "./components/ToDoList";
+    import ToDoFooter from "./components/ToDoFooter";
 
     export default {
         name: 'App',
+        components: {
+            ToDoHeader,
+            ToDoList,
+            ToDoFooter,
+        },
         data() {
             return {
-                p: {
-                    name: 'Maixiaochai',
-                    age: 666
-                }
+                todoData: [
+                    {title: 'Vue组件通信学习1', finished: false},
+                    {title: 'Vue组件通信学习2', finished: false},
+                    {title: 'Vue组件通信学习3', finished: false},
+                    {title: 'Vue实例练习1', finished: false},
+                    {title: 'Vue实例练习2', finished: false},
+                ],
             }
         },
 
         methods: {
-            logPerson() {
-                alert('Coming!');
+            // 根据索引删除一条记录
+            delTodo(theIndex) {
+                //splice(start, deleteCount)
+                this.todoData.splice(theIndex, 1);
             }
-        },
-
-        components: {
-            // HelloWorld,
-            // Test,
-            // ComputedAndWatch,
-            // ClassAndStyle,
-            // IfAndShow,
-            // ListRender,
-            // ListFilterAndSort,
-            // OtherInstruct,
-            // DemoEvent,
-            // MyFilters,
-            // TransitionDemo,
-            // AnimateDemo,
-            // AnimateDemoThird,
-            // LifeCircle,
-            // Props,
-            CustomEvents
         }
     }
 </script>
 
 <style>
-    #app {
-        font-family: Avenir, Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
+    .todo-container{
+        width: 600px;
+        margin: 0 auto;
     }
-    .word {
 
+    .todo-container .todo-wrap {
+        padding: 10px;
+        border: 1px solid #DDDDDD;
+        border-radius: 5px;
     }
 </style>
