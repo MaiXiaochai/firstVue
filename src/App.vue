@@ -2,10 +2,17 @@
     <div  id="app" class="todo-container">
         <div class="todo-wrap">
             <ToDoHeader ref="header"/>
-            <ToDoList :todo-data="todoData" :del-item-in-list="delTodo"/>
+            <ToDoList :todo-data="todoData" />
             <ToDoFooter :todoDataInFooter="todoData" :selectAllInApp="selectAllTodo"
-                        :delFinishedTodos = "delFinishedTodos"/>
+                        :delFinishedTodos = "delFinishedTodos">
+                <label>
+                    <input slot="isCheckAll" type="checkbox" v-model="isCheckAll"/>
+                </label>
+                <span slot="finish">已完成{{finishedCount}}件/总计{{todoData.length}}件</span>
+                <button slot="delete" class="btn-warning" @click="delFinishedTodos">清除已完成任务</button>
+            </ToDoFooter>
         </div>
+        <vantDemo></vantDemo>
     </div>
 </template>
 
@@ -13,9 +20,11 @@
     import ToDoHeader from "./components/ToDoHeader";
     import ToDoList from "./components/ToDoList";
     import ToDoFooter from "./components/ToDoFooter";
+    import vantDemo from "./components/vantDemo";
 
     // 引入工具类
     import localStorageUtil from "./utils/localStorageUtil";
+    import PubSub from 'pubsub-js';
 
     export default {
         name: 'App',
@@ -23,15 +32,38 @@
             ToDoHeader,
             ToDoList,
             ToDoFooter,
+            vantDemo
         },
         data() {
             return {
                 todoData: localStorageUtil.readTodos()
             }
         },
+        computed: {
+            finishedCount() {
+                return this.todoData.reduce(
+                    (total, todo) => total + (todo.finished ? 1 : 0), 0
+                );
+            },
+            isCheckAll: {
+                get() {
+                    // 注意这里直接写函数名 finishedCount，不用调用
+                    return this.finishedCount === this.todoData.length && this.todoData.length > 0;
+                },
+                // value 在复选框点击的时候，会自动传入
+                set(value) {
+                    this.selectAllTodo(value);
+                }
+            }
+        },
         mounted() {
             // 绑定自定义事件(addTodoInHeader) 监听
             this.$refs.header.$on('addTodoInHeader', this.addTodo);
+            // 订阅消息
+            // msg 指的是接收的消息名称， token 可以理解为接收的参数
+            PubSub.subscribe('delItemInItem', (msg, token) =>{
+                this.delTodo(token);
+            });
         },
 
         methods: {

@@ -5,7 +5,6 @@
                 v-for="(todo, index) in todoData"
                 :todo="todo"
                 :item-index="index"
-                :del-item-in-item="delItemInList"
             />
         </ul>
     </div>
@@ -20,8 +19,7 @@
         },
 
         props: {
-            todoData: Array,
-            delItemInList: Function
+            todoData: Array
         },
     }
 </script>

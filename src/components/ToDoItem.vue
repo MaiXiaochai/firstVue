@@ -13,12 +13,13 @@
 </template>
 
 <script>
+    import PubSub from 'pubsub-js';
+
     export default {
         name: "ToDoItem",
         props: {
             todo: Object,
             itemIndex: Number, // 当前任务在总任务数组中的下标
-            delItemInItem: Function
         },
         data() {
             return {
@@ -36,7 +37,9 @@
             },
             delItem() {
                 if (window.confirm(`确定删除 ${this.todo.title}吗？`)) {
-                    this.delItemInItem(this.itemIndex);
+                    // this.delItemInItem(this.itemIndex);
+                    // 发布
+                    PubSub.publish('delItemInItem', this.itemIndex);
                 }
             },
         }
