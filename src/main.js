@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import './assets/index.css'
+import router from './router';
 
 Vue.config.productionTip = false
 
@@ -10,6 +11,8 @@ Vue.use(Button);
 
 // 引入日期选择
 import { DatetimePicker } from 'vant';
+
+import './plugins/element.js'
 Vue.use(DatetimePicker);
 
 /*
@@ -29,5 +32,7 @@ Vue.filter('globalCurrencyFormat', (value) => {
 
 
 new Vue({
+    // 这里一个 router <=> 'router': router
+    router,
     render: h => h(App),
 }).$mount('#app')
