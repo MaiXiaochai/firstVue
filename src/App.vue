@@ -1,35 +1,31 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <div>
-      <p>
-        If Element is successfully added to this project, you'll see an
-        <code v-text="'<el-button>'"></code>
-        below
-      </p>
-      <el-button>el-button</el-button>
-    </div>
-    <ElementUIDemo></ElementUIDemo>
+    <!--  路由导航  -->
+    <router-link to="/home">首页</router-link>
+    <router-link to="/about">关于</router-link>
+    <router-link to="/mine">联系我们</router-link>
+
+    <!--  设置路由出口  -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-  import ElementUIDemo from "./components/ElementUIDemo";
 export default {
   name: 'app',
   components: {
-    ElementUIDemo,
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  width: 300px;
+  height: 500px;
+  background-color: orange;
+  margin: 10px auto;
+}
+h2 {
+  color: red;
 }
 </style>
