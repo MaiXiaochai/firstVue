@@ -1,13 +1,25 @@
 <template>
     <div id="mine">
-        <p>联系我们</p>
+        <h2>联系我们</h2>
     </div>
 </template>
 
 <script>
     export default {
         name: "Mine",
-        props: ['name', 'gender', 'height']
+        beforeRouteEnter(to, from, next) {
+            console.log('Mine：进入之前调用');
+            next();
+        },
+
+        beforeRouteUpdate(to, from, next) {
+            console.log('Mine：参数变了');
+            next();
+        },
+        beforeRouteLeave(to, from, next) {
+            console.log('Mine：离开之前调用');
+            next();
+        },
     }
 </script>
 
