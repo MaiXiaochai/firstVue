@@ -1,13 +1,16 @@
 <template>
   <div id="app">
+    <CounterDemo></CounterDemo>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+  import CounterDemo from "./components/CounterDemo";
 export default {
   name: 'app',
   components: {
+    CounterDemo,
   }
 }
 </script>

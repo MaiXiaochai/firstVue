@@ -13,6 +13,7 @@ Vue.use(Button);
 import { DatetimePicker } from 'vant';
 
 import './plugins/element.js'
+import store from './store'
 Vue.use(DatetimePicker);
 
 /*
@@ -34,5 +35,7 @@ Vue.filter('globalCurrencyFormat', (value) => {
 new Vue({
     // 这里一个 router <=> 'router': router
     router,
-    render: h => h(App),
+
+    store,
+    render: h => h(App)
 }).$mount('#app')
