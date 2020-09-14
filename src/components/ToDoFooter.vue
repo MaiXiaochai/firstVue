@@ -1,16 +1,34 @@
 <template>
     <div class="todo-footer">
         <label>
-            <slot name="isCheckAll"></slot>
+            <input slot="isCheckAll" type="checkbox" v-model="selectAllOrNot"/>
         </label>
-        <slot name="finish"></slot>
-        <slot name="delete"></slot>
+        <span slot="finish">已完成{{finishedCount}}件/总计{{todosCount}}件</span>
+        <button slot="delete" class="btn-warning" @click="delFinishedTodos">清除已完成任务</button>
     </div>
 </template>
 
 <script>
+    import {mapGetters, mapActions} from 'vuex'
     export default {
         name: "ToDoFooter",
+        computed: {
+            ...mapGetters(['todosCount', 'finishedCount', 'isCheckAll']),
+            selectAllOrNot: {
+                // 决定是否勾选
+                get() {
+                    return this.isCheckAll;
+                },
+                // 这里一旦调用set，元素对象会传值给set--布尔值
+                set(value) {
+                    this.selectAllTodo(value);
+                }
+            }
+        },
+
+        methods: {
+            ...mapActions(['selectAllTodo', 'delFinishedTodos'])
+        }
     }
 </script>
 

@@ -13,7 +13,6 @@
 </template>
 
 <script>
-    import PubSub from 'pubsub-js';
 
     export default {
         name: "ToDoItem",
@@ -38,8 +37,9 @@
             delItem() {
                 if (window.confirm(`确定删除 ${this.todo.title}吗？`)) {
                     // this.delItemInItem(this.itemIndex);
-                    // 发布
-                    PubSub.publish('delItemInItem', this.itemIndex);
+                    // 发布删除事件
+                    // PubSub.publish('delItemInItem', this.itemIndex);
+                    this.$store.dispatch('delTodo', this.itemIndex)
                 }
             },
         }

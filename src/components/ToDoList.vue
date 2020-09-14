@@ -2,25 +2,33 @@
     <div>
         <ul class="todo-main">
             <ToDoItem
-                v-for="(todo, index) in todoData"
-                :todo="todo"
-                :item-index="index"
+                    v-for="(todo, index) in todoData"
+                    :todo="todo"
+                    :item-index="index"
             />
         </ul>
     </div>
 </template>
 
 <script>
+    import localStorageUtil from "../utils/localStorageUtil";
     import ToDoItem from "./ToDoItem";
+    import {mapState} from "vuex";
+
     export default {
         name: "ToDoList",
         components: {
             ToDoItem,
         },
-
-        props: {
-            todoData: Array
+        computed: {
+            ...mapState(['todoData'])
         },
+        watch: {
+            todoData: {
+                deep: true,
+                handler: localStorageUtil.saveTodos
+            }
+        }
     }
 </script>
 
@@ -30,14 +38,5 @@
         border: 1px solid #DDD;
         border-radius: 2px;
         padding: 0;
-    }
-
-    .todo-empty {
-        height: 40px;
-        line-height: 40px;
-        border: 1px solid #DDD;
-        border-radius: 2px;
-        padding-left: 5px;
-        margin-top: 10px;
     }
 </style>

@@ -14,9 +14,6 @@
 <script>
     export default {
         name: "ToDoHeader",
-        props: {
-            // addTodoInHeader: Function,
-        },
         data() {
             return {
                 title: ''
@@ -39,10 +36,12 @@
                 };
 
                 // 3. 调用 addTodoInHeader，插入数据
-
-                // this.addTodoInHeader(todo);
+                // this.addTodoInHeader(todoItem);
                 // 这里改成用事件方式，addTodoInHeader 在这里只是一个名字而已，事件的名字
-                this.$emit('addTodoInHeader', todo);
+                // this.$emit('addTodoInHeader', todoItem);
+
+                // 3.2
+                this.$store.dispatch('addTodo', todo);
 
                 // 4. 清空输入框
                 this.title = '';
