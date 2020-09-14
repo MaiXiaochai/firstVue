@@ -21,6 +21,22 @@ export default new Vuex.Store({
         },
         decrement({commit}) {
             commit('DECREMENT');
+        },
+        incrementEven({commit, state}) {
+            if(state.count % 2 === 0) {
+                commit('INCREMENT');
+            }
+        },
+        // 模拟异步，一秒后 +1
+        incrementAsync({commit}) {
+            setTimeout(() => {
+                commit('INCREMENT');
+            }, 1000)
+        },
+    },
+    getters: {
+        oddOrEven(state) {
+            return state.count % 2 === 0 ? '偶数': '奇数';
         }
     },
     modules: {}
